@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Works long</h1>
+
+{% for item in jobs %}
+<h2># {{item.id}}</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title of activity</th>
+            <th>Team leader</th>
+            <th>Duration</th>
+            <th>List of collaborators</th>
+            <th>Is finished</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ item.job }}</td>
+            <td>{{ item.user.surname }} {{item.user.name}}</td>
+            <td>{{ item.work_size }}</td>
+            <td>{{ item.collaborators }}</td>
+            <td>
+                {% if item.is_finished %}
+                    <span>Is finished</span>
+                {% else %}
+                    <span>Is not finished</span>
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endfor %}
+{% endblock %}
